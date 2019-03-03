@@ -1,6 +1,10 @@
 <?php
-    /**
-     * Created by Maisondunet.
-     * Author : Alexandre PERRIGAULT
-     * Created date : 03/03/19 23:55
-     */
+
+    require __DIR__ . "/../vendor/autoload.php";
+
+    use \Core\Request;
+
+    $request = Request::createFromGlobals();
+
+    var_dump($request);
+    die();
