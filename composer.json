@@ -1,0 +1,13 @@
+{
+    "name": "aerue/myframework",
+    "description": "Créer mon premier framework en PHP POO MVC",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexandre PERRIGAULT",
+            "email": "contact@alexandre-perrigault.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
