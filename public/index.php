@@ -9,11 +9,12 @@
     $request = Request::createFromGlobals();
 
     $router = new Router($request);
-    $router
-        ->addRoute(new Route("testsFoo", "/tests/foo", [], \App\Controller\TestsController::class, "foo"))
-        ->addRoute(new Route("testsBar", "/test/bar/:param", ["param" => "[\w]+"], \App\Controller\TestsController::class, "bar"));
 
     try {
+        $router
+            ->addRoute(new Route("testsFoo", "/tests/foo", [], \App\Controller\TestsController::class, "foo"))
+            ->addRoute(new Route("testsBar", "/tests/bar/:param", ["param" => "[\w]+"], \App\Controller\TestsController::class, "bar"));
+
         $route = $router->getRouteByRequest();
         $route->call();
     } catch (\Exception $e) {

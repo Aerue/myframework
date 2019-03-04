@@ -36,11 +36,13 @@
          */
         public function addRoute(Route $route)
         {
-            // TODO: Implement addRoute(Route $route) method.
-
             // Si la route existe déjà (teste sur le nom) alors on soulève une erreur
-            // throw new \Exception() ...
-            // Sinon on l'ajoute a la liste de nos routes !
+            if(isset($this->routes[$route->getName()])) {
+                throw new \Exception("Cette route existe déjà !");
+            }
+            $this->routes[$route->getName()] = $route;
+
+            return $this;
         }
 
         /**
@@ -49,11 +51,14 @@
          */
         public function getRouteByRequest()
         {
-            // TODO: Implement getRouteByRequest() method.
-
-            // Pour chaque route, on teste si elle correspond à la requête, si oui alors on renvoie cette route
-            // Si aucune route ne correspond alors on renvoie une erreur
-            // throw new \Exception() ...
+            /// Pour chaque route, on teste si elle correspond à la requête, si oui alors on renvoie cette route
+            foreach($this->routes as $route) {
+                if($route->match($this->request->getServer()['REQUEST_URI'])) {
+                    return $route;
+                }
+            }
+            // Sinon on soulève une erreur
+            throw new \Exception("Cette route n'existe pas !");
         }
 
     }
