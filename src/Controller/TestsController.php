@@ -6,16 +6,29 @@
     class TestsController extends AppController
     {
 
+        /**
+         *
+         */
         public function foo()
         {
             echo 'Hello world !';
         }
 
+        /**
+         * @param $bar
+         */
         public function bar($bar)
         {
             echo $bar;
         }
 
-        // A vous d'implémeter la fonction !
+        /**
+         * @param $bar
+         * @throws \Exception
+         */
+        public function redirection($bar)
+        {
+            $this->redirect("testsBar", ["param" => $bar]);
+        }
 
     }
