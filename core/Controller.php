@@ -4,6 +4,7 @@
 
 
     use Core\Router\Router;
+    use duncan3dc\Laravel\BladeInstance;
 
     abstract class Controller
     {
@@ -19,6 +20,11 @@
         private $router;
 
         /**
+         * @var Blade
+         */
+        private $blade;
+
+        /**
          * Controller constructor.
          *
          * @param Request $request
@@ -28,6 +34,8 @@
         {
             $this->request = $request;
             $this->router = $router;
+
+            $this->blade = new BladeInstance($_SERVER['DOCUMENT_ROOT'] . '/../src/View/', 'tmp' . $_SERVER['DOCUMENT_ROOT'] . '/../tmp/cache/views/');
         }
 
         /**
@@ -40,6 +48,15 @@
         {
             $route = $this->router->getRoute($routeName);
             header(sprintf("Location: %s", $route->generateUrl($args)));
+        }
+
+        /**
+         * @param string $filename
+         * @param array $data
+         */
+        protected function render($filename, $data = [])
+        {
+            echo $this->blade->render($filename, $data);
         }
 
     }

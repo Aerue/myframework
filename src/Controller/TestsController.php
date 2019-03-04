@@ -11,15 +11,17 @@
          */
         public function foo()
         {
-            echo 'Hello world !';
+            return $this->render('foo');
         }
 
         /**
          * @param $bar
+         *
+         * @return
          */
         public function bar($bar)
         {
-            echo $bar;
+            return $this->render('bar', compact('bar'));
         }
 
         /**
