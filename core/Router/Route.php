@@ -3,6 +3,8 @@
     namespace Core\Router;
 
 
+    use Core\Request;
+
     class Route
     {
 
@@ -91,6 +93,20 @@
             // Sinon on renvoie une regexp par défaut
             return '([^/]+)';
         }
+
+        /**
+         * @param $args
+         * @return string
+         */
+        public function generateUrl($args)
+        {
+            // On remplace chaque paramètre du chemin par les arguments transmis
+            $url = str_replace(array_keys($args), $args, $this->path);
+            // On supprime les ":"
+            $url = str_replace(":", "", $url);
+            return $url;
+        }
+
         /**
          * @return string
          */

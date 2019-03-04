@@ -16,4 +16,6 @@
             echo $bar;
         }
 
+        // A vous d'implémeter la fonction !
+
     }
