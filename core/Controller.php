@@ -35,7 +35,7 @@
             $this->request = $request;
             $this->router = $router;
 
-            $this->blade = new BladeInstance($_SERVER['DOCUMENT_ROOT'] . '/../src/View/', 'tmp' . $_SERVER['DOCUMENT_ROOT'] . '/../tmp/cache/views/');
+            $this->blade = new BladeInstance($_SERVER['DOCUMENT_ROOT'] . '/../src/View/', $_SERVER['DOCUMENT_ROOT'] . '/../tmp/cache/views/');
         }
 
         /**
